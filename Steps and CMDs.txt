@@ -37,3 +37,8 @@ push to github
 check make sure job is triggered from github.
 create pull request in githup and check if everything looks good, merge to master.
 build should trigger immidiately in jenkins.
+execute ansible-playbook command and verify if your playbook actually works
+cd ansible-config-mgt
+ansible-playbook -i inventory/dev.yml playbooks/common.yml
+go to each of the servers and check if wireshark has been installed by running which wireshark or wireshark --version
+take screenshots and update.
