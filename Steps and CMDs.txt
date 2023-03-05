@@ -34,4 +34,6 @@ git init
 git add .
 git commit -m "changes added"
 push to github
-check make sure job is triggered from github and build in jenking immidiately.
+check make sure job is triggered from github.
+create pull request in githup and check if everything looks good, merge to master.
+build should trigger immidiately in jenkins.
