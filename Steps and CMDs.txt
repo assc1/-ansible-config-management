@@ -1,0 +1,37 @@
+use the jenkins ec2 instance and rename as Jenkins-Ansible.
+create a new repo and name it ansible-config-mgt.
+ssh into the jenkins-ansible server
+sudo apt update
+sudo apt install ansible.
+check ansible version
+ansible --version
+Create a new Freestyle project ansible in Jenkins and point it to your ‘ansible-config-mgt’ repository
+Configure Webhook in GitHub and set webhook to trigger ansible build.
+Configure a Post-build job to save all (**)
+Test your setup by making some change in README.MD file in master branch and make sure that builds starts automatically and Jenkins saves the files (build artifacts) in following folder
+every time the jenkins server is stop/restart webhook have to be configured:
+allocate elastic ip to the server. go to elastic click on allocate elastic ip.
+link the elastic ip to the jenkins server to keep it from changing each time you start/stop instance.
+clone the repo to the jenkins-ansible server
+https://github.com/assc1/ansible-config-mgt..git
+git checkout -b pr-11
+make a dir called playbook and inventory respectively.
+mkdir playbook
+mkdir inventory
+within the playbook folder, create a file: common.yml
+with the inventory folder create yml file for dev,staging,testing and prod.
+touch dev.yml staging.yml uat.yml prod.yml
+add key to ssh agent
+eval `ssh-agent -s
+ssh-add <path-to-private-key>
+confirm key added
+ssh-add -l
+ssh -A ubuntu@public ip
+update the /inventory/dev.yml wt the respective private ips
+update yml file with the provided ansible playbook.
+git status
+git init
+git add .
+git commit -m "changes added"
+push to github
+check make sure job is triggered from github and build in jenking immidiately.
